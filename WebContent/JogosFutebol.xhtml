@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Campeonato de futebol</title>
+
+<h:outputStylesheet library="css" name="sistema.css"/>
+<h:outputStylesheet library="css" name="consulta-lancamentos.css"/>
+
+</h:head>
+<h:body>
+	
+	<h1>Campeonato de futebol</h1>
+	
+	<h:form id="frm">
+	
+		<h:messages showDetail="false"/>
+				
+		<h:panelGrid columns="2" styleClass="form-grid"
+			columnClasses="label,campo">
+			
+			<h:outputLabel value="Data do jogo"/>
+			<h:panelGroup>
+				<h:inputText size="12" id="dataJogo" value="#{jogosFutebolBean.jogo.dataJogo}"
+					label="Data do jogo">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:inputText>
+				<h:message for="dataJogo" showSummary="true" showDetail="false"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Time da casa"/>
+			<h:panelGroup>
+				<h:inputText size="12" id="timeCasa" value="#{jogosFutebolBean.jogo.timeCasa}"
+					label="Time da casa" />
+				<h:message for="timeCasa" showSummary="true" showDetail="false"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Gols do time da casa"/>
+			<h:panelGroup>
+				<h:inputText size="12" id="golTimaCasa" value="#{jogosFutebolBean.jogo.golTimeCasa}"
+					label="Gols do time da casa"/>
+				<h:message for="golTimaCasa" showSummary="true" showDetail="false"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Time visitante"/>
+			<h:panelGroup>
+				<h:inputText size="12" id="timeVisitante" value="#{jogosFutebolBean.jogo.timeVisitante}"
+					label="Time visitante">					
+				</h:inputText>
+				<h:message for="timeVisitante" showSummary="true" showDetail="false"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Gols do time visitante"/>
+			<h:panelGroup>
+				<h:inputText size="12" id="golsTimeVisitante" value="#{jogosFutebolBean.jogo.golTimeVisitante}"
+					label="Gols do time visitante">
+				</h:inputText>
+				<h:message for="golsTimeVisitante" showSummary="true" showDetail="false"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Valor arrecadado"/>
+			<h:panelGroup>
+				<h:inputText size="12" id="valorArrecadado" value="#{jogosFutebolBean.jogo.valorArrecadado}"
+					label="Valor arrecadado">
+					<f:convertNumber minFractionDigits="2" locale="pt_BR"/>
+				</h:inputText>
+				<h:message for="valorArrecadado" showSummary="true" showDetail="false"/>
+			</h:panelGroup>
+						
+			<h:outputLabel/>
+			<h:commandButton value="Cadastrar" action="#{jogosFutebolBean.incluir}"/>
+		</h:panelGrid>
+		
+		<br/>
+		
+		<h:dataTable var="item" value="#{jogosFutebolBean.jogos}" border="1">
+			<h:column>
+				<f:facet name="header">Data do jogo</f:facet>
+				<h:outputLabel value="#{item.dataJogo}">
+					<f:convertDateTime pattern="dd,MMMM,yyyy" locale="pt_BR"/>
+				</h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Time da casa</f:facet>
+				<h:outputLabel value="#{item.timeCasa}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Gols time da casa</f:facet>
+				<h:outputLabel value="#{item.golTimeCasa}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Time visitante</f:facet>
+				<h:outputLabel value="#{item.timeVisitante}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Gols time visitante</f:facet>
+				<h:outputLabel value="#{item.golTimeVisitante}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Valor arrecadado</f:facet>
+				<h:outputLabel value="#{item.valorArrecadado}">
+					<f:convertNumber type="currency" currencySymbol="R$" locale="pt_BR"/>
+				</h:outputLabel>
+			</h:column>
+			
+		</h:dataTable>
+		
+	</h:form>
+</h:body>
+</html>
