@@ -26,8 +26,8 @@
 			<h:outputLabel value="Data do jogo"/>
 			<h:panelGroup>
 				<h:inputText size="12" id="dataJogo" value="#{jogosFutebolBean.jogo.dataJogo}"
-					label="Data do jogo">
-					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					label="Data do jogo" required="true">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>					
 				</h:inputText>
 				<h:message for="dataJogo" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
@@ -35,21 +35,26 @@
 			<h:outputLabel value="Time da casa"/>
 			<h:panelGroup>
 				<h:inputText size="12" id="timeCasa" value="#{jogosFutebolBean.jogo.timeCasa}"
-					label="Time da casa" />
+					label="Time da casa" required="true">
+					<f:validateLength minimum="5"/>
+				</h:inputText>
 				<h:message for="timeCasa" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
 			
 			<h:outputLabel value="Gols do time da casa"/>
 			<h:panelGroup>
 				<h:inputText size="12" id="golTimaCasa" value="#{jogosFutebolBean.jogo.golTimeCasa}"
-					label="Gols do time da casa"/>
+					label="Gols do time da casa" required="true">
+					<f:validateLongRange minimum="0" maximum="99" />
+				</h:inputText>
 				<h:message for="golTimaCasa" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
 			
 			<h:outputLabel value="Time visitante"/>
 			<h:panelGroup>
 				<h:inputText size="12" id="timeVisitante" value="#{jogosFutebolBean.jogo.timeVisitante}"
-					label="Time visitante">					
+					label="Time visitante" required="true">
+					<f:validateLength minimum="5"/>					
 				</h:inputText>
 				<h:message for="timeVisitante" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
@@ -57,7 +62,8 @@
 			<h:outputLabel value="Gols do time visitante"/>
 			<h:panelGroup>
 				<h:inputText size="12" id="golsTimeVisitante" value="#{jogosFutebolBean.jogo.golTimeVisitante}"
-					label="Gols do time visitante">
+					label="Gols do time visitante" required="true">
+					<f:validateLongRange minimum="0" maximum="99"/>
 				</h:inputText>
 				<h:message for="golsTimeVisitante" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
@@ -65,8 +71,9 @@
 			<h:outputLabel value="Valor arrecadado"/>
 			<h:panelGroup>
 				<h:inputText size="12" id="valorArrecadado" value="#{jogosFutebolBean.jogo.valorArrecadado}"
-					label="Valor arrecadado">
+					label="Valor arrecadado" >
 					<f:convertNumber minFractionDigits="2" locale="pt_BR"/>
+					<f:validateDoubleRange minimum="0"/>
 				</h:inputText>
 				<h:message for="valorArrecadado" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
