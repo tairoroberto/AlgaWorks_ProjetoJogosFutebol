@@ -27,7 +27,8 @@
 			<h:panelGroup>
 				<h:inputText size="12" id="dataJogo" value="#{jogosFutebolBean.jogo.dataJogo}"
 					label="Data do jogo" required="true">
-					<f:convertDateTime pattern="dd/MM/yyyy"/>					
+					<f:convertDateTime pattern="dd/MM/yyyy"/>	
+					<f:validator validatorId="br.com.tairoroberto.DataValidator"/>				
 				</h:inputText>
 				<h:message for="dataJogo" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
@@ -74,6 +75,7 @@
 					label="Valor arrecadado" >
 					<f:convertNumber minFractionDigits="2" locale="pt_BR"/>
 					<f:validateDoubleRange minimum="0"/>
+					<f:converter converterId="br.com.tairoroberto.ValorArrecadadoConverter"/>
 				</h:inputText>
 				<h:message for="valorArrecadado" showSummary="true" showDetail="false"/>
 			</h:panelGroup>
@@ -111,6 +113,7 @@
 				<f:facet name="header">Valor arrecadado</f:facet>
 				<h:outputLabel value="#{item.valorArrecadado}">
 					<f:convertNumber type="currency" currencySymbol="R$" locale="pt_BR"/>
+					<f:converter converterId="br.com.tairoroberto.ValorArrecadadoConverter"/>
 				</h:outputLabel>
 			</h:column>
 			
